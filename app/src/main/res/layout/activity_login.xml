@@ -18,7 +18,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:hint="Username" />
+        android:hint="@string/username" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,6 +62,15 @@
         android:text="Register Here"
         android:id="@+id/tvRegisterHere"
         android:layout_below="@+id/bLogin"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Don&apos;t have an account?"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView" />
 
 </RelativeLayout>
