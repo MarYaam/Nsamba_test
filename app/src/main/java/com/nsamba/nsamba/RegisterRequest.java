@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by SmirkQueen on 18/06/2016.
  */
 public class RegisterRequest extends StringRequest {
-    private static final String Register_Request_URL = "http://nsambatech.com/Register.php";
+    private static final String Register_Request_URL = "http://nsamba.us/Register.php";
     private Map<String, String> params;
 
     public RegisterRequest(String name, String username, String password, Response.Listener<String> Listener){

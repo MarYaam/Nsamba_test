@@ -21,7 +21,9 @@ public class UserAreaActivity extends AppCompatActivity {
         String username = intent.getStringExtra("username");
 
         String message = "Welcome," + " " + username + "!";
-        welcomeMessage.setText(message);
+        if (welcomeMessage != null) {
+            welcomeMessage.setText(message);
+        }
 
 
     }

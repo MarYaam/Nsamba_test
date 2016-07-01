@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by SmirkQueen on 18/06/2016.
  */
 public class LoginRequest extends StringRequest {
-    private static final String Login_Request_URL = "http://nsambatech.com/Login.php";
+    private static final String Login_Request_URL = "http://nsamba.us/Login.php";
     private Map<String, String> params;
 
     public LoginRequest(String username, String password, Response.Listener<String> Listener){

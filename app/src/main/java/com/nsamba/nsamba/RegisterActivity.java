@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,43 +29,50 @@ public class RegisterActivity extends AppCompatActivity {
 
         final Button bRegister = (Button) findViewById(R.id.bRegister);
 
-        bRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String name = etName.getText().toString();
-                final String username = etUserName.getText().toString();
-                final String password = etPassword.getText().toString();
+        if (bRegister != null) {
+            bRegister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String name = etName.getText().toString();
+                    final String username = etUserName.getText().toString();
+                    final String password = etPassword.getText().toString();
 
-                Response.Listener<String> responseListener = new Response.Listener<String>(){
 
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            if (success) {
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                RegisterActivity.this.startActivity(intent);
-                            }else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("Register Failed")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
+
+                    Response.Listener<String> responseListener = new Response.Listener<String>(){
+
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);
+                                boolean success = jsonResponse.getBoolean("success");
+                                if (success) {
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    RegisterActivity.this.startActivity(intent);
+                                }else{
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                    builder.setMessage("Register Failed")
+                                            .setNegativeButton("Retry", null)
+                                            .create()
+                                            .show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
+
+
+
+
                         }
+                    };
 
 
-                    }
-                };
-
-
-                RegisterRequest registerRequest = new RegisterRequest(name,username,password, responseListener);
-                RequestQueue queue= Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
-            }
-        });
+                    RegisterRequest registerRequest = new RegisterRequest(name,username,password, responseListener);
+                    RequestQueue queue= Volley.newRequestQueue(RegisterActivity.this);
+                    queue.add(registerRequest);
+                }
+            });
+        }
     }
 }
